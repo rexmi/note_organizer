@@ -8,5 +8,10 @@ function filter_for_tags() {
 }
 
 $(() => {
+//   let text = $('#note_tags').val();
+//   console.log(text);
+//
+//   $('#note_tags').val(filter_for_tags());
+
   $('#note_tags').blur(filter_for_tags);
 });
