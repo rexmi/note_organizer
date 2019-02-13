@@ -1,3 +1,5 @@
+<%= javascript_include_tag 'test.js' %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -10,7 +12,7 @@
   <%= @note.body %>
 </p>
 
-<p>
+<p id='tags_update_field'>
   <strong>Tags:</strong>
   <%= @note.tags %>
 </p>
