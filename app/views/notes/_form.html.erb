@@ -1,3 +1,4 @@
+<%= javascript_include_tag 'notes_form.js' %>
 <%= form_with(model: note, local: true) do |form| %>
   <% if note.errors.any? %>
     <div id="error_explanation">
@@ -23,7 +24,7 @@
 
   <div class="field">
     <%= form.label :tags %>
-    <%= form.text_field :tags %>
+    <%= form.text_field :tags, value: tags_format(@note.tags) %>
   </div>
 
   <div class="actions">
