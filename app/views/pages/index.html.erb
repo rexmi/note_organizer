@@ -1,2 +1,6 @@
 <h1>Pages#index</h1>
-<%= link_to 'New Note', new_note_path %>
+
+<%= text_field :post, :title, size: 35, value: 'future search queue' %>
+<p>
+  <%= link_to 'New Note', new_note_path %>
+</p>
