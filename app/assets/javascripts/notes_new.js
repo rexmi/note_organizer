@@ -11,3 +11,20 @@
 //   alert('wtf2');
 //   $('#note_tags').blur(filter_for_tags);
 // });
+
+
+$(() => {
+  $("#preview-button").click((e) => {
+
+    e.preventDefault();
+    // $.ajax({
+    //   type: "GET",
+    //   url: "../preview",
+    //   data: {text: $("#note_body").val()},
+    //   success: (data) => {
+    //     $("#paste-area").html(data);
+    //   }
+    // });
+    create_markdown_preview($("#note_body").val());
+  });
+});

@@ -17,3 +17,4 @@
 //= require_tree .
 //= stub 'notes_form.js'
 //= stub 'test_page.js'
+//= stub 'notes_new.js'

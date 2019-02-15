@@ -1,8 +1,10 @@
-
+<%= javascript_include_tag "notes_new.js" %>
 <h1>New Note</h1>
 
 <%= render 'form', note: @note %>
 
-<%= button_tag 'Preview' %>
+<%= button_tag 'Preview', id: "preview-button" %>
 <br>
 <%= link_to 'Back', notes_path %>
+<br>
+<div id="paste-area"></div>
