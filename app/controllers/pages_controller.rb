@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   include PagesHelper
+  # layout 'application', :except => [:preview]
   def index
     @s = markdown("
       ```javascript
@@ -13,6 +14,7 @@ class PagesController < ApplicationController
     @text = markdown(params[:text])
     puts '888888888888888'
     puts @text
+    render :body => @text
   end
 
   def testpage
