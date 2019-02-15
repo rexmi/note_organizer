@@ -11,8 +11,9 @@
 // about supported directives.
 //
 //= require jquery
-//= require rails-ujs
+
 //= require activestorage
 //= require turbolinks
 //= require_tree .
 //= stub 'notes_form.js'
+//= stub 'test_page.js'
