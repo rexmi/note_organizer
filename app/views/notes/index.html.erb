@@ -16,7 +16,7 @@
     <% @notes.each do |note| %>
       <tr>
         <td><%= note.title %></td>
-        <td><%= note.body %></td>
+        <td style="max-width:150px; max-height:30px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><%= note.body %></td>
         <td><%= note.tags %></td>
         <td><%= link_to 'Show', note %></td>
         <td><%= link_to 'Edit', edit_note_path(note) %></td>
