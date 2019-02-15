@@ -1,7 +1,7 @@
 function create_markdown_preview(text) {
   $.ajax({
     type: "GET",
-    url: "../preview",
+    url: "/preview",
     data: {text: text},
     success: (data) => {
       $("#paste-area").html(data);
