@@ -8,4 +8,13 @@ class PagesController < ApplicationController
       ```")
     puts @s
   end
+
+  def preview
+    @text = markdown(params[:text])
+    puts '888888888888888'
+    puts @text
+  end
+
+  def testpage
+  end
 end
