@@ -1,10 +1,9 @@
 <h1>Pages#index</h1>
 
-<%= text_field :post, :title, size: 35, value: 'future search queue' %>
+<%= text_field :post, :title, id:'search-queue', size: 35, value: 'future search queue' %>
 <p>
   <%= link_to 'New Note', new_note_path %>
 </p>
 
-<p>
-  <%= @s %>
+<p id='paste-area'>
 </p>
