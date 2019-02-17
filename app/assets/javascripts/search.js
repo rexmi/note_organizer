@@ -4,8 +4,8 @@ function send_search(e) {
       type: "GET",
       url: "/search",
       data: {'search': $("#search-queue").val()},
-      success: () => {
-        console.log('yes');
+      success: (d) => {
+        console.log(d);
       }
     });
   }
