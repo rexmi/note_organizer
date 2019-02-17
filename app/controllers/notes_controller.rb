@@ -61,6 +61,26 @@ class NotesController < ApplicationController
     end
   end
 
+  def search
+    @result = {}
+    @notes = Note.all
+    key_words = params[:search].split(",")
+    keys, tags = key_words.shift, key_words
+    p 'keys: ', keys
+    p 'tags: ', tags
+
+    # evaluate score for keys/tags
+
+    # add :note_id => score to @result
+
+    # set orders to @result
+
+    # render @result
+    @result[:a] = 633
+    @result[:b] = 778
+    render :body => @result
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_note
