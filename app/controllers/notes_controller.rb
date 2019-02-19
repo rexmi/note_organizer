@@ -65,34 +65,8 @@ class NotesController < ApplicationController
   end
 
   def search
-    # result_hash = {}
-    # notes = Note.all
-    # # key_words = params[:search].split(",")
-    # key_words = Notes_Mod.generate_keywords(params[:search])
-    # keys, tags = key_words.shift, key_words
-    # p 'keys: ', keys
-    # p 'tags: ', tags
-
-    # # evaluate score for keys/tags
-    # notes.each do |d|
-    #   score = ranking(d.title, keys)
-    #   if score > 0
-    # # add :note_id => score to @result
-    #     result_hash[d.id.to_s] = score
-    #   end
-    # end
-
-    # # set orders to @result
-    # @result = result_hash.sort_by { |k, v| v }
-
-    # # render @result
-
-    # render :body => @result
-
     results = create_serach_result(Note.all)
-    # results.each do |r|
-    #   @notes << Note.find(r[0].to_i)
-    # end
+
     notes_array = process_notes_array(results)
 
     if results.empty?

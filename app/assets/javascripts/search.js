@@ -5,7 +5,7 @@ function send_search(e) {
       url: "/search",
       data: {'search': $("#search-queue").val()},
       success: (d) => {
-        $("#paste-area").html(d)
+        $("#paste-area").html(d);
       }
     });
   }
