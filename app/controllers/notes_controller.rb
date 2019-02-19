@@ -1,5 +1,8 @@
+require "#{Rails.root}/lib/assets/note_search"
+
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
+  include Notes_Mod
 
   # GET /notes
   # GET /notes.json
@@ -62,23 +65,36 @@ class NotesController < ApplicationController
   end
 
   def search
-    @result = {}
-    @notes = Note.all
-    key_words = params[:search].split(",")
-    keys, tags = key_words.shift, key_words
-    p 'keys: ', keys
-    p 'tags: ', tags
+    # result_hash = {}
+    # notes = Note.all
+    # # key_words = params[:search].split(",")
+    # key_words = Notes_Mod.generate_keywords(params[:search])
+    # keys, tags = key_words.shift, key_words
+    # p 'keys: ', keys
+    # p 'tags: ', tags
 
-    # evaluate score for keys/tags
+    # # evaluate score for keys/tags
+    # notes.each do |d|
+    #   score = ranking(d.title, keys)
+    #   if score > 0
+    # # add :note_id => score to @result
+    #     result_hash[d.id.to_s] = score
+    #   end
+    # end
 
-    # add :note_id => score to @result
+    # # set orders to @result
+    # @result = result_hash.sort_by { |k, v| v }
 
-    # set orders to @result
+    # # render @result
 
-    # render @result
-    @result[:a] = 633
-    @result[:b] = 778
-    render :body => @result
+    # render :body => @result
+    result = create_serach_result(Note.all)
+    if result.empty?
+      render :body => ['nothing in here']
+    else
+      render :body => result
+    end
+
   end
 
   private
@@ -90,5 +106,38 @@ class NotesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def note_params
       params.require(:note).permit(:title, :body, :tags)
+    end
+
+
+
+    def rank_tags(tags, key_tag)
+      p 'hi'
+    end
+
+    def create_serach_result(input)
+      # result_hash = {}
+
+      keys, tags = Notes_Mod.create_key_tag(params[:search])
+
+      p 'keys: ', keys
+      p 'tags: ', tags
+
+      # evaluate score for keys/tags
+      # input.each do |d|
+      #   score = Notes_Mod.ranking(d.title, keys)
+      #   if score > 0
+      # # add :note_id => score to @result
+      #     result_hash[d.id.to_s] = score
+      #   end
+      # end
+      result_hash = Notes_Mod.give_score(input, keys)
+
+      # set orders to @result
+      result = result_hash.sort_by { |k, v| v }
+
+      # render @result
+
+      # render :body => @result
+      return result
     end
 end
