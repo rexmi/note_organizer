@@ -88,11 +88,17 @@ class NotesController < ApplicationController
     # # render @result
 
     # render :body => @result
-    result = create_serach_result(Note.all)
-    if result.empty?
+
+    results = create_serach_result(Note.all)
+    # results.each do |r|
+    #   @notes << Note.find(r[0].to_i)
+    # end
+    notes_array = process_notes_array(results)
+
+    if results.empty?
       render :body => ['nothing in here']
     else
-      render :body => result
+      render file: 'app/views/notes/search.html.erb', layout: false, locals: {:notes => notes_array}
     end
 
   end
@@ -139,5 +145,13 @@ class NotesController < ApplicationController
 
       # render :body => @result
       return result
+    end
+
+    def process_notes_array(array_of_id)
+      notes = []
+      array_of_id.each do |d|
+        notes << Note.find(d[0].to_i)
+      end
+      notes
     end
 end

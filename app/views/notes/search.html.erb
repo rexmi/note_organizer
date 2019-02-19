@@ -1,0 +1,16 @@
+<% notes.each do |note| %>
+  <p>
+    <strong><%= note.title %></strong>
+  </p>
+
+  <p>
+    <strong>Body:</strong>
+    <%= markdown(note.body) %>
+  </p>
+
+  <p>
+    <strong>Tags:</strong>
+    <%= note.tags %>
+  </p>
+  ---------------------------------------
+<% end %>
