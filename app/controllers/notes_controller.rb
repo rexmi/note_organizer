@@ -99,8 +99,8 @@ class NotesController < ApplicationController
 
       keys, tags = Notes_Mod.create_key_tag(params[:search])
 
-      p 'keys: ', keys
-      p 'tags: ', tags
+      # p 'keys: ', keys
+      # p 'tags: ', tags
 
       # evaluate score for keys/tags
       # input.each do |d|
@@ -113,7 +113,8 @@ class NotesController < ApplicationController
       result_hash = Notes_Mod.give_score(input, keys)
 
       # set orders to @result
-      result = result_hash.sort_by { |k, v| v }
+      result = result_hash.sort_by { |k, v| v }.reverse
+
 
       # render @result
 
