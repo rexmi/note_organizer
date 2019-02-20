@@ -88,12 +88,6 @@ class NotesController < ApplicationController
       params.require(:note).permit(:title, :body, :tags)
     end
 
-
-    # not done yet
-    def rank_tags(tags, key_tag)
-      p 'hi'
-    end
-
     def create_serach_result(input)
       search_keys, search_tags = Notes_Mod.create_key_tag(params[:search])
       result_hash = Notes_Mod.give_score(input, search_keys, search_tags)
