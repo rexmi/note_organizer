@@ -64,9 +64,9 @@ class NotesController < ApplicationController
     end
   end
 
+  # search Note.all then render
   def search
     results = create_serach_result(Note.all)
-
     notes_array = process_notes_array(results)
 
     if results.empty?
@@ -89,39 +89,20 @@ class NotesController < ApplicationController
     end
 
 
-
+    # not done yet
     def rank_tags(tags, key_tag)
       p 'hi'
     end
 
     def create_serach_result(input)
-      # result_hash = {}
-
       keys, tags = Notes_Mod.create_key_tag(params[:search])
-
-      # p 'keys: ', keys
-      # p 'tags: ', tags
-
-      # evaluate score for keys/tags
-      # input.each do |d|
-      #   score = Notes_Mod.ranking(d.title, keys)
-      #   if score > 0
-      # # add :note_id => score to @result
-      #     result_hash[d.id.to_s] = score
-      #   end
-      # end
       result_hash = Notes_Mod.give_score(input, keys)
 
-      # set orders to @result
-      result = result_hash.sort_by { |k, v| v }.reverse
-
-
-      # render @result
-
-      # render :body => @result
-      return result
+    # return result in descending order
+      result_hash.sort_by { |k, v| v }.reverse
     end
 
+    # generate array of qualifited Notes
     def process_notes_array(array_of_id)
       notes = []
       array_of_id.each do |d|
