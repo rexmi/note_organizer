@@ -6,7 +6,7 @@ module Notes_Mod
       return input
     end
 
-    def rank_title(title, keys)
+    def give_relative_score(title, keys)
       if title.any? {|i| keys.include? i}
         result = title - (title - keys)
         return result.length
@@ -25,16 +25,32 @@ module Notes_Mod
       score = 0
       title = sanitize(title)
       key_title = sanitize(key_title)
-      score += rank_title(title, key_title)
+      score += give_relative_score(title, key_title)
       score
     end
 
-    def give_score(input, keys)
+    def tag_ranking(tags, key_tags)
+      return 0 if tags.empty?
+      score = 0
+      remove_spaces key_tags
+      score += give_relative_score(tags, key_tags)
+      score
+    end
+
+    def remove_spaces(arr_str)
+      arr_str.each do |d|
+        d.lstrip!
+        d.rstrip!
+      end
+    end
+
+    def give_score(input, keys, tags)
       result = {}
       input.each do |d|
-        score = ranking(d.title, keys)
-        if score > 0
-          result[d.id.to_s] = score
+        title_score = ranking(d.title, keys)
+        tag_score = tag_ranking(d.tags, tags)
+        if title_score > 0
+          result[d.id.to_s] = [title_score, tag_score]
         end
       end
       return result

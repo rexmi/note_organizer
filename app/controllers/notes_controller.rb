@@ -95,11 +95,12 @@ class NotesController < ApplicationController
     end
 
     def create_serach_result(input)
-      keys, tags = Notes_Mod.create_key_tag(params[:search])
-      result_hash = Notes_Mod.give_score(input, keys)
+      search_keys, search_tags = Notes_Mod.create_key_tag(params[:search])
+      result_hash = Notes_Mod.give_score(input, search_keys, search_tags)
 
     # return result in descending order
-      result_hash.sort_by { |k, v| v }.reverse
+    # sort by title first then by tags when equal
+      result_hash.sort_by { |k, v| [v[0], v[1]] }.reverse
     end
 
     # generate array of qualifited Notes
