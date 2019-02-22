@@ -11,7 +11,20 @@ function send_search(e) {
   }
 }
 
-$(() => {
+// $(() => {
+//   $("#search-queue").focus(() => {
+//     $("#search-queue").val("");
+//     $("#search-queue").on("keydown", send_search);
+//   });
+//   $("#search-queue").on('focusout', () => {
+//     $("#search-queue").off("keydown", send_search);
+//     if($("#search-queue").val() == "") {
+//       $("#search-queue").val("future search queue");
+//     }
+//   });
+// });
+
+$(document).on('turbolinks:load', function() {
   $("#search-queue").focus(() => {
     $("#search-queue").val("");
     $("#search-queue").on("keydown", send_search);
@@ -22,4 +35,4 @@ $(() => {
       $("#search-queue").val("future search queue");
     }
   });
-});
+})
