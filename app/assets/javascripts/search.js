@@ -11,6 +11,15 @@ function send_search(e) {
   }
 }
 
+// function filter_for_tags() {
+//   let result = "";
+//   result = $('#note_tags').val().replace(/,\s/g, ",");
+//   if (!(result.includes("{") && result.includes("}"))) {
+//     result = "{" + result + "}";
+//   }
+//   $('#note_tags').val(result);
+// }
+
 // $(() => {
 //   $("#search-queue").focus(() => {
 //     $("#search-queue").val("");
@@ -35,4 +44,10 @@ $(document).on('turbolinks:load', function() {
       $("#search-queue").val("future search queue");
     }
   });
+  // if($("#note_tags").length) {
+  //   $('#note_tags').blur(filter_for_tags);
+  // }
+  // $("#note_tags").ready(() => {
+  //   console.log('yoyoyoyoyoyo');
+  // });
 })
