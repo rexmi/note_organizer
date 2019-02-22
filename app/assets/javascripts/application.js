@@ -15,5 +15,3 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-//= stub 'notes_form.js'
-//= stub 'notes_new.js'

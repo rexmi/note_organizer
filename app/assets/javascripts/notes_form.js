@@ -9,4 +9,9 @@ function filter_for_tags() {
 
 $(document).on('turbolinks:load', () => {
   $('#note_tags').blur(filter_for_tags);
+
+  $("#preview-button").click((e) => {
+    e.preventDefault();
+    create_markdown_preview($("#note_body").val());
+  });
 });
