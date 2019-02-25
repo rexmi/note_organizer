@@ -2,12 +2,12 @@ class PagesController < ApplicationController
   include PagesHelper
   # layout 'application', :except => [:preview]
   def index
-    @s = markdown("
-      ```javascript
-      var s = 'hello world';
-      console.log(s);
-      ```")
-    puts @s
+    # @s = markdown("
+    #   ```javascript
+    #   var s = 'hello world';
+    #   console.log(s);
+    #   ```")
+    # puts @s
   end
 
   def preview
