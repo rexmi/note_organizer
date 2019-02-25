@@ -19,8 +19,8 @@
         <td style="max-width:150px; max-height:30px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"><%= note.body %></td>
         <td><%= note.tags %></td>
         <td><%= link_to 'Show', note %></td>
-        <td><%= link_to 'Edit', edit_note_path(note) %></td>
-        <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_note_path(note) if can? :edit, Note %></td>
+        <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } if can? :delete, Note %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,6 +28,6 @@
 
 <br>
 
-<%= link_to 'New Note', new_note_path %>
+<%= link_to 'New Note', new_note_path if can? :create, Note %>
 <br>
 <%= link_to 'Search', '/' %>

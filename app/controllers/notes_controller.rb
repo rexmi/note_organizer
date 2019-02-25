@@ -2,7 +2,7 @@ require "#{Rails.root}/lib/assets/note_search"
 
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: :search
+  # before_action :authenticate_user!, except: [:search, :index]
   include Notes_Mod
 
   # GET /notes
@@ -67,10 +67,10 @@ class NotesController < ApplicationController
 
   # search Note.all then render
   def search
-    if !user_signed_in?
-      render body: "<div><h1>Please log in/sign up</h1></div>"
-      return
-    end
+    # if !user_signed_in?
+    #   render body: "<div><h1>Please log in/sign up</h1></div>"
+    #   return
+    # end
 
     results = create_serach_result(Note.all)
     notes_array = process_notes_array(results)
