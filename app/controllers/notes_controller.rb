@@ -3,6 +3,8 @@ require "#{Rails.root}/lib/assets/note_search"
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
   # before_action :authenticate_user!, except: [:search, :index]
+  load_and_authorize_resource
+  skip_authorize_resource :only => [:index, :search]
   include Notes_Mod
 
   # GET /notes
