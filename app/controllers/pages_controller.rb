@@ -18,5 +18,6 @@ class PagesController < ApplicationController
   end
 
   def testpage
+    @notes = Note.all
   end
 end
