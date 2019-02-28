@@ -51,11 +51,25 @@
         <div class='col-sm-8'>
           <%= yield %>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4 col-centered">
+          <!-- sidebar -->
           <div class='sidebar'>
             <h2>Sidebar</h2>
-            <p>links below</p>
+            <div class="btn-group-vertical" role="group" aria-label="Button group with nested dropdown">
+              <button type="button" class="btn btn-outline-success">Empty</button>
+              <a href="https://github.com/rexmi" class="btn btn-outline-success">My Github</a>
+              <div class="btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-outline-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Dropdown
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                  <a class="dropdown-item" href="#">Dropdown link</a>
+                  <a class="dropdown-item" href="#">Dropdown link</a>
+                </div>
+              </div>
+            </div>
           </div>
+          <!-- sidebar end -->
         </div>
       </div>
     </div>
