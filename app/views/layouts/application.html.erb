@@ -47,7 +47,17 @@
   <!-- Navbar ended -->
   <body>
     <div class='container'>
-      <%= yield %>
+      <div class='row'>
+        <div class='col-sm-8'>
+          <%= yield %>
+        </div>
+        <div class="col-sm-4">
+          <div class='sidebar'>
+            <h2>Sidebar</h2>
+            <p>links below</p>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
