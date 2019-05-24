@@ -20,4 +20,8 @@ class PagesController < ApplicationController
   def testpage
     @notes = Note.all
   end
+
+  def craigslist
+
+  end
 end
