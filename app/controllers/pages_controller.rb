@@ -24,7 +24,7 @@ class PagesController < ApplicationController
   end
 
   def craigslist
-    @gigs = ScrapResult.where.not(content: nil)
+    @gigs = ScrapResult.where.not(content: nil).order(datetime: :desc)
     @no_content_gigs = ScrapResult.where(content: nil).size
   end
 
