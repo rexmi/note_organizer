@@ -21,7 +21,7 @@ module Assets::Scrap_Folder::Scrap_Logic
 
   def random_sleep(extra=0)
     t = rand(3..8)
-    puts "sleep for #{t} seconds"
+    puts "sleep for #{t + extra} seconds"
     sleep(t + extra)
   end
 

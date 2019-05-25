@@ -1,4 +1,4 @@
-task :test_task => :environment do
+task :scrap_content => :environment do
   include Assets::Scrap_Folder::Scrap_Logic
 
   queue = ScrapResult.where(content: nil)
@@ -8,9 +8,9 @@ task :test_task => :environment do
     q.content = get_content(q.post_url)
     q.save
     t = rand(3..9)
-    puts "#{q.pid}, #{truncate(q.title, length: 28)} finished"
-    sleep(t)
-    puts "slept for #{t} seconds"
+    puts "#{q.pid}, #{q.title} finished"
+    random_sleep(5)
+    # puts "slept for #{t + 5} seconds"
   end
 end
 
