@@ -24,15 +24,8 @@ class PagesController < ApplicationController
   end
 
   def craigslist
-    # vancouver = 'https://vancouver.craigslist.ca/search/cpg?'
-    # kamloops = 'https://kamloops.craigslist.ca/search/cpg?'
-
-    # generate_doc(kamloops)
-    # process_city
-
-    # f = File.open("html.txt")
-    # @html = generate_dummy_doc f.read
-    # gigs = get_all_rows(@html)
+    @gigs = ScrapResult.where.not(content: nil)
+    @no_content_gigs = ScrapResult.where(content: nil).size
   end
 
   private
