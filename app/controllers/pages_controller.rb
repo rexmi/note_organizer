@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
   include PagesHelper
+  include Assets::Scrap_Folder::Scrap_Logic
+
   # layout 'application', :except => [:preview]
   def index
     # @s = markdown("
@@ -22,6 +24,17 @@ class PagesController < ApplicationController
   end
 
   def craigslist
+    # vancouver = 'https://vancouver.craigslist.ca/search/cpg?'
+    # kamloops = 'https://kamloops.craigslist.ca/search/cpg?'
 
+    # generate_doc(kamloops)
+    # process_city
+
+    # f = File.open("html.txt")
+    # @html = generate_dummy_doc f.read
+    # gigs = get_all_rows(@html)
   end
+
+  private
+
 end
