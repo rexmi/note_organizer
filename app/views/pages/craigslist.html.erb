@@ -4,47 +4,52 @@
 
 <div class="container-fluid">
   <% @gigs.each do |g| %>
-    <br>
-    <table>
-      <thead>
-        <tr>
-          <th>
-            <%= g.city %>
-          </th>
-          <th>
-            <%= g.datetime %>
-          </th>
-          <th>
-            <%= g.pid %>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <strong>Title</strong>
-          </td>
-          <td colspan=2>
-            <%= g.title %>
-          </td>
-        </tr>
-        <tr>
-          <td colspan=3>
-            <div>
-              <%= link_to g.post_url, g.post_url, target: :_blank %>
-            </div>
-          </td>
-        </tr>
-        <tr><td><br></td></tr>
-        <tr>
-          <td colspan=3>
-            <div>
-              <%= g.content %>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <hr class="style1">
+    <div class= <%= g.pid %> >
+      <br>
+      <table>
+        <thead>
+          <tr>
+            <th>
+              <%= g.city %>
+            </th>
+            <th>
+              <%= g.datetime %>
+            </th>
+            <th class="mom">
+              <%= g.pid %>
+            </th>
+            <th class="dad">
+              <%= button_tag "Hide", class: "btn btn-primary hide-btn" %>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong>Title</strong>
+            </td>
+            <td colspan=3>
+              <%= g.title %>
+            </td>
+          </tr>
+          <tr>
+            <td colspan=4>
+              <div>
+                <%= link_to g.post_url, g.post_url, target: :_blank %>
+              </div>
+            </td>
+          </tr>
+          <tr><td><br></td></tr>
+          <tr>
+            <td colspan=4>
+              <div>
+                <%= g.content %>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <hr class="style1">
+    </div>
   <% end %>
 </div>
