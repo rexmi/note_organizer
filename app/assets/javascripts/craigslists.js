@@ -1,10 +1,13 @@
 $( document ).on("turbolinks:load", () => {
   $("body").on("click", ".hide-btn", (e) => {
-    // alert(e.target.className);
-    let pid = e.target.parentElement.previousSibling.previousSibling.textContent.trim();
-    // alert(pid);
-    // console.log(pid)
-    // alert(pid.trim());
-    $(`.${pid}`).empty();
+    // let pid = e.target.parentElement.previousSibling.previousSibling.textContent.trim();
+    pid = e.target.id
+    // $(`.${pid}`).empty();
+
+    if($(`.${pid}`).attr("class").includes("invisible")) {
+      $(`.${pid}`).removeClass("invisible").addClass("visible");
+    } else {
+      $(`.${pid}`).addClass("invisible");
+    }
   })
 })

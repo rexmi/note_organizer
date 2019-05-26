@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
   <% @gigs.each do |g| %>
-    <div class= <%= g.pid %> >
+    <div>
       <br>
       <table>
         <thead>
@@ -19,11 +19,11 @@
               <%= g.pid %>
             </th>
             <th class="dad">
-              <%= button_tag "Hide", class: "btn btn-primary hide-btn" %>
+              <%= button_tag "Hide", class: "btn btn-primary hide-btn", id: g.pid %>
             </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class= <%= g.pid %>>
           <tr>
             <td>
               <strong>Title</strong>
@@ -35,21 +35,25 @@
           <tr>
             <td colspan=4>
               <div>
-                <%= link_to g.post_url, g.post_url, target: :_blank %>
+                <%= link_to g.post_url, g.post_url, { target: :_blank, class: g.pid } %>
               </div>
             </td>
           </tr>
           <tr><td><br></td></tr>
           <tr>
-            <td colspan=4>
+            <td colspan=4 class= <%= g.pid %>>
               <div>
                 <%= g.content %>
               </div>
             </td>
           </tr>
+          <tr class= <%= g.pid %> >
+            <td colspan=4>
+              <hr class="style1">
+            </td>
+          </tr>
         </tbody>
       </table>
-      <hr class="style1">
     </div>
   <% end %>
 </div>
