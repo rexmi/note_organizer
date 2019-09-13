@@ -19,3 +19,16 @@ task :scrap_each_city => :environment do
 
   process_city
 end
+
+task :clear_old_scrap_result => :environment do
+  now = Time.now.to_datetime
+  ScrapResult.all.each do |result|
+    days = now - result.datetime.to_datetime
+    if days > 20
+      puts result.id.to_s + " #{result.datetime.to_s}"
+      result.delete
+    else
+      puts result.id.to_s + " is safe"
+    end
+  end
+end
