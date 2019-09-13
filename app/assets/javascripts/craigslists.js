@@ -8,6 +8,7 @@ $( document ).on("turbolinks:load", () => {
       $(`.${pid}`).removeClass("invisible").addClass("visible");
     } else {
       $(`.${pid}`).addClass("invisible");
+      // $.post()
     }
   })
 })
